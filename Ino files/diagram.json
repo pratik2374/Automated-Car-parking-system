@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "author": "Pratik Gond",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -291, "left": -93.2, "attrs": {} },
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -14.5, "left": 4.6, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -3.2,
+      "left": 197.6,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": 257.2, "left": 192, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -516.9,
+      "left": 341.5,
+      "attrs": { "distance": "395" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic2",
+      "top": -507.3,
+      "left": 120.7,
+      "attrs": { "distance": "400" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic3",
+      "top": -516.9,
+      "left": -80.9,
+      "attrs": { "distance": "395" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic4",
+      "top": -526.5,
+      "left": -301.7,
+      "attrs": { "distance": "51" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "lcd1:VCC", "esp:VIN", "red", [ "h-28.8", "v182.5", "h-153.6", "v-67.2" ] ],
+    [ "lcd1:GND", "esp:GND.1", "black", [ "h-38.4", "v115.2" ] ],
+    [ "lcd1:SDA", "esp:D21", "green", [ "h-48", "v-38.2" ] ],
+    [ "lcd1:SCL", "esp:D22", "blue", [ "h-38.4", "v0.3" ] ],
+    [ "servo1:GND", "esp:GND.1", "black", [ "h-48", "v-76.8" ] ],
+    [ "servo1:V+", "esp:VIN", "red", [ "h-211.2", "v-76.7" ] ],
+    [ "servo1:PWM", "esp:D18", "purple", [ "h-48", "v0.2" ] ],
+    [ "ultrasonic4:VCC", "bb1:tp.3", "red", [ "v115.2", "h182.4" ] ],
+    [ "esp:VIN", "bb1:tp.1", "red", [ "h-153.6", "v-489.6" ] ],
+    [ "esp:GND.2", "bb1:tn.1", "black", [ "h-134.4", "v-470.5" ] ],
+    [ "ultrasonic3:VCC", "bb1:tp.6", "red", [ "v0" ] ],
+    [ "ultrasonic2:VCC", "bb1:tp.15", "red", [ "v38.4", "h-105.6" ] ],
+    [ "ultrasonic1:VCC", "bb1:tp.25", "red", [ "v0" ] ],
+    [ "ultrasonic4:GND", "bb1:tn.4", "black", [ "v105.6", "h162" ] ],
+    [ "ultrasonic3:GND", "bb1:tn.9", "black", [ "v0" ] ],
+    [ "ultrasonic2:GND", "bb1:tn.20", "black", [ "v105.6", "h-78" ] ],
+    [ "ultrasonic1:GND", "bb1:tn.25", "black", [ "v0" ] ],
+    [ "esp:D12", "bb1:1b.j", "green", [ "h-115.2", "v-250.3" ] ],
+    [ "esp:D13", "bb1:2b.j", "green", [ "h0" ] ],
+    [ "esp:D14", "bb1:3b.j", "green", [ "h0" ] ],
+    [ "esp:D15", "bb1:4b.j", "green", [ "h28.5", "v-182.6", "h-172.8" ] ],
+    [ "bb1:1b.f", "bb1:1t.e", "green", [ "v0" ] ],
+    [ "bb1:2b.f", "bb1:2t.e", "green", [ "v0" ] ],
+    [ "bb1:3b.f", "bb1:3t.e", "green", [ "v0" ] ],
+    [ "bb1:4b.f", "bb1:4t.e", "green", [ "v0" ] ],
+    [ "esp:D25", "bb1:8b.j", "green", [ "h-19.2", "v-153.6", "h9.6" ] ],
+    [ "esp:D26", "bb1:9b.j", "green", [ "h-9.6", "v-153.7", "h9.6" ] ],
+    [ "esp:D27", "bb1:10b.j", "green", [ "h-28.8", "v-173.1", "h38.4" ] ],
+    [ "esp:D32", "bb1:11b.j", "green", [ "h-38.4", "v-105.7", "h57.6" ] ],
+    [ "bb1:8b.f", "bb1:8t.e", "green", [ "v0" ] ],
+    [ "bb1:9b.f", "bb1:9t.e", "green", [ "v0" ] ],
+    [ "bb1:10b.f", "bb1:10t.e", "green", [ "v0" ] ],
+    [ "bb1:11b.f", "bb1:11t.e", "green", [ "v0" ] ],
+    [ "ultrasonic4:TRIG", "bb1:1t.a", "green", [ "v76.8", "h153.2", "v115.2" ] ],
+    [ "ultrasonic3:TRIG", "bb1:2t.a", "green", [ "v76.8", "h-48.4" ] ],
+    [ "ultrasonic2:TRIG", "bb1:3t.a", "green", [ "v76.8", "h-240.4" ] ],
+    [ "ultrasonic1:TRIG", "bb1:4t.a", "green", [ "v48", "h-461.2" ] ],
+    [ "ultrasonic4:ECHO", "bb1:8t.a", "green", [ "v38.4", "h258.4", "v76.8", "h-48" ] ],
+    [ "ultrasonic3:ECHO", "bb1:9t.a", "green", [ "v0" ] ],
+    [ "ultrasonic2:ECHO", "bb1:10t.a", "green", [ "v57.6", "h-192.8" ] ],
+    [ "ultrasonic1:ECHO", "bb1:11t.a", "green", [ "v115.2", "h-404" ] ]
+  ],
+  "dependencies": {}
+}
