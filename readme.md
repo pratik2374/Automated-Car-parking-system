@@ -2,7 +2,7 @@
 
 ## **Overview**
 The **Automated Parking System** is a Flask-based application that utilizes **YOLO** for vehicle and license plate detection, **Tesseract OCR** for license plate recognition, and **ThingSpeak API** for real-time parking slot management and parking system is managed by ESP32 and output is shown by a screen.
-**For Detailed Project report for this project [ClickHere](IOT%20based%20Car%20Parking%20System.pdf)
+**For Detailed Project report for this project [ClickHere]([IOT%20based%20Car%20Parking%20System.pdf](https://docs.google.com/document/d/1eMI91i_AxunxBf9wceRgtuGP6XGCJUhY/edit?usp=sharing&ouid=114326110509733353084&rtpof=true&sd=true))
 
 
 ## **Features**
