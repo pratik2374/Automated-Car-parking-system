@@ -13,6 +13,17 @@ The **Automated Parking System** is a Flask-based application that utilizes **YO
 - **Live Slot Display**: An LCD screen at the entrance shows real-time slot availability.
 - **IoT Communication**: Uses ESP32 to communicate with the cloud via Flask and ThingSpeak.
 - **Web Interface**: Displays processed data using a Flask web app.
+ 
+## Performance Metrics For YOLO Vehicle and Pedestrian Detection 
+
+| Metric     | Value   |
+|------------|---------|
+| Accuracy   | 94%     |
+| Precision  | 95%     |
+| Recall     | 95.7%   |
+| F1-Score   | 95.34%  |
+| IoU        | 0.83    |
+| mAP@0.50   | 94.61%  |
 
 ## Implementation Table
 | Component         | Model                          | Use                                                                 |
@@ -63,14 +74,6 @@ python app.py
 | `/`             | GET    | Renders the homepage                                            |
 | `/process_images` | GET    | Detects vehicles, extracts license plates, and retrieves parking slot info |
 
-## **How It Works**
-1. The system loads and processes images using YOLO.
-2. If a vehicle is detected, the license plate is extracted via OCR.
-3. The detection data is sent to ESP32 via Thingspeak.
-4. The ESP32 retrieves the available parking slots by ultrasonic sensors
-5. If parking slot is available then display the slot number on screen and sent data to ThingSpeak.
-6. The data is displayed in the Flask web interface.
-
 ## **Workflow**
 1. Load 5 images (in `.jpg`, `.jpeg`, or `.png` format).
 2. YOLO model detects vehicles (Car, Van, Truck, Bus, Motorcycle, Bicycle).
@@ -85,6 +88,37 @@ python app.py
 8. Retrieve slot information from ThingSpeak.
 9. Display detected vehicle, license plate, and slot information in the web interface.
 
+![Flowchart](Images/Flowchart.png)
+*flowchart of smart parking system using YOLOv8 , ultrasonic sensors and Node MCU*
+
+## **How It Works**
+1. The system loads and processes images using YOLO.
+2. If a vehicle is detected, the license plate is extracted via OCR.
+3. The detection data is sent to ESP32 via Thingspeak.
+4. The ESP32 retrieves the available parking slots by ultrasonic sensors
+5. If parking slot is available then display the slot number on screen and sent data to ThingSpeak.
+6. The data is displayed in the Flask web interface.
+
+![Comparison](Images/Project.png)
+*idol system*
+
+![systemPy](Images/system.png)
+*Internal Python code Snippet used for detection of vehicle and sending signal to cloud accordingly*
+
+![fieldvalue1](Images/fieldvalue1.png)
+*The NodeMCU starts to work only when it receives the field value 1*
+
+![spaceAvailable](Images/spaceAvail.png)
+*Servo motor works only when at least one of the spaces is unoccupied , i.e. Gates Open*
+
+![spaceFull](Images/spaceFull.png)
+*Servo motor does not work when all the Slots Are Occupied , i.e. Gates does not open*
+
+![Flask](Images/Flask.png)
+*The interface of webpage that stores the data*
+
+
+
 ## **Project Structure**
 ```bash
 📂 Automated-Parking-System
@@ -97,8 +131,17 @@ python app.py
  ┗ 📜 README.md
 
 📂 INO files
+ ┣ 📜 diagram.json #connections and Used for Simulation if using in VS code
+ ┣ 📜 esp32-dht22.ino  # Code for the ESP32 Module
+ ┣ 📜 libraries.txt # Libraries Used
+ ┗ 📜 wokwi-project.txt 
 
 ```
+
+## **Comparison With Existing similar Tech**
+The graph shows that YOLOv8, which we used for object detection, achieves a 94% accuracy. This is significant because it’s comparable to many of the other systems and even better than a few. Unlike systems that rely on predefined outputs, YOLOv8 uses AI to detect objects in real-time, adapting to different situations and conditions. This shows that our approach is very reliable, even when compared to other models that also use AI or a combination of sensors. 
+![Comparison](Images/comparision.png)
+*A Bar Graph comparing Accuracy of different systems with ours*
 
 ## **Future Improvements**
 ✅ Integrate real-time video processing for live camera feeds.
