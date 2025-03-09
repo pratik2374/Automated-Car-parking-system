@@ -64,7 +64,7 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tessera
 4) Run the Application
 python app.py
 
-5) go to okwi simulator and clone the file
+5) go to wokwi simulator and clone the file
  https://wokwi.com/projects/410388066527542273
 ```
 
