@@ -1,14 +1,18 @@
-# **Automated Parking System**
+# **IoT-Based Smart Parking System**
 
 ## **Overview**
-The **Automated Parking System** is a Flask-based application that utilizes **YOLO** for vehicle and license plate detection, **Tesseract OCR** for license plate recognition, and **ThingSpeak API** for real-time parking slot management.
+The **Automated Parking System** is a Flask-based application that utilizes **YOLO** for vehicle and license plate detection, **Tesseract OCR** for license plate recognition, and **ThingSpeak API** for real-time parking slot management and parking system is managed by ESP32 and output is shown by a screen.
+**For Detailed Project report for this project [ClickHere](IOT%20based%20Car%20Parking%20System.pdf)
+
 
 ## **Features**
-- 🚗 **Vehicle Detection**: Detects cars, bikes, and other vehicles using a trained YOLO model.
-- 🏷️ **License Plate Recognition**: Extracts license plate numbers using OCR.
-- 📡 **Real-time Data Communication**: Sends vehicle detection data to **ThingSpeak API**.
-- 🚦 **Parking Slot Monitoring**: Retrieves available slots from **ThingSpeak**.
-- 🌐 **Web Interface**: Displays processed data using a Flask web app.
+- **Real-time Vehicle Detection**: Uses YOLOv8 to identify incoming vehicles and capture license plates via OCR.
+- **Automated Parking Management**: Determines parking slot availability using ultrasonic sensors.
+- **Smart Entry & Exit Control**: If a parking slot is available, the system opens the gate automatically.
+- **Cloud-Based Data Storage**: Stores vehicle entry and exit details in a database.
+- **Live Slot Display**: An LCD screen at the entrance shows real-time slot availability.
+- **IoT Communication**: Uses ESP32 to communicate with the cloud via Flask and ThingSpeak.
+- **Web Interface**: Displays processed data using a Flask web app.
 
 ## **Tech Stack**
 - **Backend**: Flask
@@ -16,25 +20,29 @@ The **Automated Parking System** is a Flask-based application that utilizes **YO
 - **OCR**: Tesseract
 - **Cloud Integration**: ThingSpeak API
 - **Frontend**: HTML, JavaScript (via Flask templates)
+- **IOT**: Arduino INO
 
 ## **Installation**
 
 ```bash
-# 1️⃣ Clone the Repository
+1) Clone the Repository
 git clone https://github.com/SaranshGupta02/Automated-Parking-System.git
 cd Automated-Parking-System
 
-# 2️⃣ Install Dependencies
+2) Install Dependencies
 pip install flask ultralytics opencv-python pytesseract requests
 
-# 3️⃣ Set Up Tesseract
+3) Set Up Tesseract
 # Download and install Tesseract OCR from https://github.com/UB-Mannheim/tesseract/wiki
 # Then update the path in `app.py`
 # Example:
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
-# 4️⃣ Run the Application
+4) Run the Application
 python app.py
+
+5) go to okwi simulator and clone the file
+ https://wokwi.com/projects/410388066527542273
 ```
 
 ## **API Endpoints**
@@ -46,9 +54,10 @@ python app.py
 ## **How It Works**
 1. The system loads and processes images using YOLO.
 2. If a vehicle is detected, the license plate is extracted via OCR.
-3. The detection data is sent to ThingSpeak.
-4. The system retrieves the available parking slot from ThingSpeak.
-5. The result is displayed in the Flask web interface.
+3. The detection data is sent to ESP32 via Thingspeak.
+4. The ESP32 retrieves the available parking slots by ultrasonic sensors
+5. If parking slot is available then display the slot number on screen and sent data to ThingSpeak.
+6. The data is displayed in the Flask web interface.
 
 ## **Workflow**
 1. Load 5 images (in `.jpg`, `.jpeg`, or `.png` format).
@@ -58,9 +67,11 @@ python app.py
    - OpenCV extracts the bounding box.
    - Tesseract OCR reads the plate number.
 4. Send vehicle detection data to ThingSpeak.
-5. Wait 10 seconds for parking slot data update.
-6. Retrieve slot information from ThingSpeak.
-7. Display detected vehicle, license plate, and slot information in the web interface.
+5. The ESP32 retrieves the available parking slots by ultrasonic sensors
+6. If parking slot is available then display the slot number on screen and sent data to ThingSpeak.
+7. Wait 10 seconds for parking slot data update.
+8. Retrieve slot information from ThingSpeak.
+9. Display detected vehicle, license plate, and slot information in the web interface.
 
 ## **Project Structure**
 ```bash
@@ -72,6 +83,9 @@ python app.py
  ┣ 📜 License.pt # YOLO model for license plate detection
  ┣ 📜 requirements.txt  # Dependency list
  ┗ 📜 README.md
+
+📂 INO files
+
 ```
 
 ## **Future Improvements**
