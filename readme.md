@@ -14,6 +14,18 @@ The **Automated Parking System** is a Flask-based application that utilizes **YO
 - **IoT Communication**: Uses ESP32 to communicate with the cloud via Flask and ThingSpeak.
 - **Web Interface**: Displays processed data using a Flask web app.
 
+## Implementation Table
+| Component         | Model                          | Use                                                                 |
+|-------------------|--------------------------------|---------------------------------------------------------------------|
+| Camera            | YOLOv8                         | Detects vehicles approaching the parking area and captures license plates. |
+| Node MCU          | ESP8266                        | Controls gate operations based on slot availability, integrates with cloud data. |
+| Ultrasonic Sensor | HC-SR04                        | Checks if parking slots are vacant or occupied, sending status updates to the MCU. |
+| LCD Display       | I2C LCD                        | Displays available slot numbers or 'Space Full' message at the parking entry. |
+| Cloud Platform    | ThingSpeak                     | Receives and stores vehicle entry/exit data from the YOLO model for tracking. |
+| Simulation        | Wokwi                          | Visualizes the system's complete setup, integrating all IoT components for testing. |
+| OCR               | Optical Character Recognition (OCR) | Captures license plate details for vehicle tracking and billing. |
+
+
 ## **Tech Stack**
 - **Backend**: Flask
 - **Computer Vision**: YOLO (Ultralytics), OpenCV
