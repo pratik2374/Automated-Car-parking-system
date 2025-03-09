@@ -58,14 +58,15 @@ pip install flask ultralytics opencv-python pytesseract requests
 3) Set Up Tesseract
 # Download and install Tesseract OCR from https://github.com/UB-Mannheim/tesseract/wiki
 # Then update the path in `app.py`
-# Example:
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 4) Run the Application
 python app.py
 
-5) go to wokwi simulator and clone the file
- https://wokwi.com/projects/410388066527542273
+5) Go to Wokwi simulator and clone the file
+https://wokwi.com/projects/410388066527542273
+
+6) You can even run this entire project on VS Code by just setting up the Wokwi extension in VS Code
 ```
 
 ## **API Endpoints**
